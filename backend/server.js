@@ -3,8 +3,6 @@ const { Server } = require("socket.io");
 
 const app = require("./app");
 
-const { sequelize } = require("./models");
-
 const configureChat = require("./sockets/chat.socket");
 
 require("dotenv").config();
@@ -30,11 +28,6 @@ const PORT = process.env.PORT || 3001;
 async function startServer() {
 
     try {
-
-        await sequelize.authenticate();
-
-        console.log("Base de datos conectada.");
-
         server.listen(PORT, () => {
 
             console.log(`Servidor iniciado en puerto ${PORT}`);

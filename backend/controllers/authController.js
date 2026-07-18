@@ -1,16 +1,10 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-
-const { User } = require("../models");
+const { getUserByEmail } = require("../mock/mockData");
 
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({
-            where: {
-                email
-            }
-        });
+        const user = getUserByEmail(email);
 
         if (!user) {
             return res.status(404).json({
@@ -18,10 +12,7 @@ exports.login = async (req, res) => {
             });
         }
 
-        const validPassword = await bcrypt.compare(
-            password,
-            user.password_hash
-        );
+        const validPassword = user.password === password;
 
         if (!validPassword) {
             return res.status(401).json({

@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-
-const { Message, User } = require("../models");
+const { getMessages, addMessage } = require("../mock/mockData");
 
 module.exports = (io) => {
     io.use((socket, next) => {
@@ -28,29 +27,13 @@ module.exports = (io) => {
         );
 
         try {
-            const history = await Message.findAll({
-                include: [
-                    {
-                        model: User,
-                        attributes: [
-                            "name"
-                        ]
-                    }
-                ],
-                limit: 10,
-                order: [
-                    [
-                        "created_at",
-                        "DESC"
-                    ]
-                ]
-            });
+            const history = getMessages().slice(0, 10);
 
-           const formattedHistory = history
+            const formattedHistory = history
             .reverse()
             .map(message => ({
                 id: message.id,
-                username: message.User.username,
+                username: message.User?.name || socket.user.username,
                 text: message.text,
                 created_at: message.created_at
             }));
@@ -64,7 +47,7 @@ module.exports = (io) => {
             "new-message",
             async (data) => {
                 try {
-                    const message = await Message.create({
+                    const message = addMessage({
                         user_id: socket.user.id,
                         text: data.text
                     });

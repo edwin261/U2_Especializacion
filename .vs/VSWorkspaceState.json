@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\config",
+    "\\backend\\controllers",
+    "\\backend\\models"
+  ],
+  "SelectedNode": "\\backend\\.env",
+  "PreviewInSolutionExplorer": false
+}

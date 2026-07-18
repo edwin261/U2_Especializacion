@@ -1,23 +1,8 @@
-const { Message, User } = require("../models");
+const { getMessages } = require("../mock/mockData");
 
 exports.getMessages = async (req, res) => {
     try {
-        const messages = await Message.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: [
-                        "name"
-                    ]
-                }
-            ],
-            order: [
-                [
-                    "created_at",
-                    "DESC"
-                ]
-            ]
-        });
+        const messages = getMessages();
         res.json(messages);
     }
     catch (error) {
