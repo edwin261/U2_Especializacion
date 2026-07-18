@@ -1,0 +1,19 @@
+# Flutter / Dart
+.dart_tool/
+.idea/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+build/
+
+# Generated native folders
+android/
+ios/
+linux/
+macos/
+web/
+windows/
+
+# IDE
+*.iml
