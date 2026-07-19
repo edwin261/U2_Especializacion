@@ -1,7 +1,7 @@
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
 
-const { User } = require("../models");
+const { Product, User } = require("../models");
 
 exports.login = async (req, res) => {
     try {
@@ -33,7 +33,8 @@ exports.login = async (req, res) => {
             {
                 id: user.id,
                 username: user.name,
-                email: user.email
+                email: user.email,
+                role: user.role
             },
 
             process.env.JWT_SECRET,
@@ -42,9 +43,17 @@ exports.login = async (req, res) => {
             }
         );
 
+        const productCount = await Product.count({
+            where: {
+                created_by: user.id
+            }
+        });
+
         res.json({
             token,
-            username: user.name
+            username: user.name,
+            userId: user.id,
+            productCount
         });
     }
     catch (error) {

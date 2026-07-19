@@ -50,7 +50,7 @@ module.exports = (io) => {
             .reverse()
             .map(message => ({
                 id: message.id,
-                username: message.User.username,
+                username: message.User.name,
                 text: message.text,
                 created_at: message.created_at
             }));
