@@ -1,0 +1,136 @@
+.products-module{
+    flex:1;
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:24px;
+}
+
+.products-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.products-header h2{
+    color:#2c3e50;
+    font-size:26px;
+}
+
+.products-header span{
+    color:#607d8b;
+}
+
+.product-form{
+    display:grid;
+    grid-template-columns:minmax(180px, 1fr) 160px auto auto;
+    gap:10px;
+    margin-bottom:16px;
+    padding:16px;
+    background:#ffffff;
+    border:1px solid #dfe6e9;
+    border-radius:6px;
+}
+
+.product-form input{
+    min-width:0;
+    padding:11px 12px;
+    border:1px solid #cfd8dc;
+    border-radius:5px;
+}
+
+.product-form button,
+.product-actions button{
+    padding:10px 14px;
+    border:none;
+    background:#27ae60;
+    color:#ffffff;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product-form button.secondary{
+    background:#607d8b;
+}
+
+.product-actions{
+    display:flex;
+    gap:8px;
+}
+
+.product-actions button{
+    background:#2980b9;
+}
+
+.product-actions button.danger{
+    background:#c0392b;
+}
+
+.product-actions button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.product-error{
+    margin-bottom:14px;
+    padding:10px 12px;
+    color:#c0392b;
+    background:#fdecea;
+    border-radius:5px;
+}
+
+.products-state{
+    padding:18px;
+    background:#ffffff;
+    border-radius:6px;
+}
+
+.products-table-wrap{
+    overflow-x:auto;
+    background:#ffffff;
+    border:1px solid #dfe6e9;
+    border-radius:6px;
+}
+
+.products-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.products-table th,
+.products-table td{
+    padding:13px 14px;
+    border-bottom:1px solid #ecf0f1;
+    text-align:left;
+    color:#2c3e50;
+}
+
+.products-table th{
+    background:#f8fafb;
+    font-weight:700;
+}
+
+.products-table tr:last-child td{
+    border-bottom:none;
+}
+
+@media (max-width: 760px){
+    .products-module{
+        padding:16px;
+    }
+
+    .products-header{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:6px;
+    }
+
+    .product-form{
+        grid-template-columns:1fr;
+    }
+
+    .product-actions{
+        flex-wrap:wrap;
+    }
+}

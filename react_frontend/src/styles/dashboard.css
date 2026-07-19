@@ -1,0 +1,29 @@
+.dashboard{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:#f3f5f7;
+}
+
+.module-tabs{
+    display:flex;
+    gap:8px;
+    padding:14px 24px;
+    background:#ffffff;
+    border-bottom:1px solid #dfe6e9;
+}
+
+.module-tabs button{
+    padding:9px 18px;
+    border:1px solid #cfd8dc;
+    background:#ffffff;
+    color:#2c3e50;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.module-tabs button.active{
+    background:#27ae60;
+    border-color:#27ae60;
+    color:#ffffff;
+}
